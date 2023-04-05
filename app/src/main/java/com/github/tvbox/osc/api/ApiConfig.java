@@ -96,51 +96,15 @@ public class ApiConfig {
         return instance;
     }
 
-    private void parseJson(String apiUrl, String jsonStr) {
-    //pyramid-add-start
-	PythonLoader.getInstance().setConfig(jsonStr);
-    //pyramid-add-end
-	JsonObject infoJson = new Gson().fromJson(jsonStr, JsonObject.class);
-	//....
-    }
+  
     
     
     
-    public Spider getCSP(SourceBean sourceBean) {
-    //pyramid-add-start
-    if (sourceBean.getApi().startsWith("py_")) {
-        try {
-            return PythonLoader.getInstance().getSpider(sourceBean.getKey(), sourceBean.getExt());
-        } catch (Exception e) {
-            e.printStackTrace();
-            return new SpiderNull();
-        }
-    }
-    //pyramid-add-end
-    return jarLoader.getSpider(sourceBean.getKey(), sourceBean.getApi(), sourceBean.getExt());
-    }
     
     
     
-    public Object[] proxyLocal(Map param) {
-    //pyramid-add-start
-    try {
-        if(param.containsKey("api")){
-            String doStr = param.get("do").toString();
-            if(doStr.equals("ck"))
-                return PythonLoader.getInstance().proxyLocal("","",param);
-            SourceBean sourceBean = ApiConfig.get().getSource(doStr);
-            return PythonLoader.getInstance().proxyLocal(sourceBean.getKey(),sourceBean.getExt(),param);
-        }else{
-            String doStr = param.get("do").toString();
-            if(doStr.equals("live")) return PythonLoader.getInstance().proxyLocal("","",param);
-        }
-    } catch (Exception e) {
-        e.printStackTrace();
-    }
-    //pyramid-add-end
-    return jarLoader.proxyInvoke(param);
-    }
+    
+    
     
     
     public static String FindResult(String json, String configKey) {
@@ -357,6 +321,12 @@ public class ApiConfig {
     private void parseJson(String apiUrl, String jsonStr) {
 
         JsonObject infoJson = new Gson().fromJson(jsonStr, JsonObject.class);
+	    
+	//pyramid-add-start
+	PythonLoader.getInstance().setConfig(jsonStr);
+    	//pyramid-add-end
+	JsonObject infoJson = new Gson().fromJson(jsonStr, JsonObject.class);
+	 
         // spider
         spider = DefaultConfig.safeJsonString(infoJson, "spider", "");
         // wallpaper
@@ -706,11 +676,36 @@ public class ApiConfig {
         if (sourceBean.getApi().endsWith(".js") || sourceBean.getApi().contains(".js?")) {
             return jsLoader.getSpider(sourceBean.getKey(), sourceBean.getApi(), sourceBean.getExt(), sourceBean.getJar());
         }
+	if (sourceBean.getApi().startsWith("py_")) {
+        try {
+            return PythonLoader.getInstance().getSpider(sourceBean.getKey(), sourceBean.getExt());
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new SpiderNull();
+        }
+    	}    
+	
 
-        return jarLoader.getSpider(sourceBean.getKey(), sourceBean.getApi(), sourceBean.getExt(), sourceBean.getJar());
+        return jarLoader.getSpider(sourceBean.getKey(), sourceBean.getApi(), sourceBean.getExt(), sourceBean.getJar(),, sourceBean.getExt());
     }
 
     public Object[] proxyLocal(Map param) {
+	try {
+        if(param.containsKey("api")){
+            String doStr = param.get("do").toString();
+            if(doStr.equals("ck"))
+                return PythonLoader.getInstance().proxyLocal("","",param);
+            SourceBean sourceBean = ApiConfig.get().getSource(doStr);
+            return PythonLoader.getInstance().proxyLocal(sourceBean.getKey(),sourceBean.getExt(),param);
+        }else{
+            String doStr = param.get("do").toString();
+            if(doStr.equals("live")) return PythonLoader.getInstance().proxyLocal("","",param);
+        }
+	} catch (Exception e) {
+		e.printStackTrace();
+	}   
+	    
+	    
 
         return jarLoader.proxyInvoke(param);
     }
