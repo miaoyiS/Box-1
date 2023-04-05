@@ -15,7 +15,7 @@ import com.github.tvbox.osc.util.PlayerHelper;
 import com.github.tvbox.osc.util.js.JSEngine;
 import com.kingja.loadsir.core.LoadSir;
 import com.orhanobut.hawk.Hawk;
-
+import com.undcover.freedom.pyramid.PythonLoader;
 import java.io.File;
 
 import me.jessyan.autosize.AutoSizeConfig;
@@ -53,7 +53,7 @@ public class App extends MultiDexApplication {
                 .setSupportSP(false)
                 .setSupportSubunits(Subunits.MM);
         PlayerHelper.init();
-
+        PythonLoader.getInstance().setApplication(this);
         // Delete Cache
         File dir = getCacheDir();
         FileUtils.recursiveDelete(dir);
