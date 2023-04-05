@@ -320,7 +320,7 @@ public class ApiConfig {
 
     private void parseJson(String apiUrl, String jsonStr) {
 
-        JsonObject infoJson = new Gson().fromJson(jsonStr, JsonObject.class);
+   
 	    
 	//pyramid-add-start
 	PythonLoader.getInstance().setConfig(jsonStr);
@@ -686,7 +686,7 @@ public class ApiConfig {
     	}    
 	
 
-        return jarLoader.getSpider(sourceBean.getKey(), sourceBean.getApi(), sourceBean.getExt(), sourceBean.getJar(),sourceBean.getExt());
+        return jarLoader.getSpider(sourceBean.getKey(), sourceBean.getApi(), sourceBean.getExt(),sourceBean.getExt());
     }
 
     public Object[] proxyLocal(Map param) {
