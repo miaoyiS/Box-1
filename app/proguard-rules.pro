@@ -44,6 +44,14 @@
 -keep public class * extends android.view.View
 -keep public class com.android.vending.licensing.ILicensingService
 
+# python
+-keep public class com.undcover.freedom.pyramid.** { *; }
+-dontwarn com.undcover.freedom.pyramid.**
+-keep public class com.chaquo.python.** { *; }
+-dontwarn com.chaquo.python.**
+
+
+
 # 保留support下的所有类及其内部类
 -keep class android.support.** {*;}
 # 保留继承的
