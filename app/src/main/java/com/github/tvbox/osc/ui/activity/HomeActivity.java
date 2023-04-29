@@ -286,12 +286,13 @@ public class HomeActivity extends BaseActivity {
             }
         });
         // Button : Drawer >> To go into App Drawer -------------------
-        tvDraw.setOnClickListener(new View.OnClickListener() {
+        /**tvDraw.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 jumpActivity(AppsActivity.class);
             }
         });
+        */
         // Button : Settings >> To go into Settings --------------------
         tvMenu.setOnClickListener(new View.OnClickListener() {
             @Override
