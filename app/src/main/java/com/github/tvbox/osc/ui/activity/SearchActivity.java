@@ -328,7 +328,7 @@ public class SearchActivity extends BaseActivity {
             search(title);
         }
         // 加载热词
-        loadHotSearch();
+       // loadHotSearch();
     }
 
     //load hot search
