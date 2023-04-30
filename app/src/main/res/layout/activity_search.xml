@@ -131,16 +131,6 @@
         android:paddingTop="@dimen/vs_20"
         android:paddingBottom="@dimen/vs_20">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="@dimen/vs_10"
-            android:text="@string/act_search_trend"
-            android:textAlignment="center"
-            android:textColor="@android:color/white"
-            android:textSize="@dimen/ts_22" />
-
         <com.owen.tvrecyclerview.widget.TvRecyclerView
             android:id="@+id/mGridViewWord"
             android:layout_width="match_parent"
