@@ -153,7 +153,7 @@ public class HomeActivity extends BaseActivity {
         this.tvWifi = findViewById(R.id.tvWifi);
         this.tvFind = findViewById(R.id.tvFind);
         this.tvStyle = findViewById(R.id.tvStyle);
-        this.tvDraw = findViewById(R.id.tvDrawer);
+        //this.tvDraw = findViewById(R.id.tvDrawer);
         this.tvMenu = findViewById(R.id.tvMenu);
         this.tvDate = findViewById(R.id.tvDate);
         this.contentLayout = findViewById(R.id.contentLayout);
@@ -726,7 +726,7 @@ public class HomeActivity extends BaseActivity {
             tvWifi.setFocusable(false);
             tvFind.setFocusable(false);
             tvStyle.setFocusable(false);
-            tvDraw.setFocusable(false);
+            //tvDraw.setFocusable(false);
             tvMenu.setFocusable(false);
             return;
         }
@@ -745,7 +745,7 @@ public class HomeActivity extends BaseActivity {
             tvWifi.setFocusable(true);
             tvFind.setFocusable(true);
             tvStyle.setFocusable(true);
-            tvDraw.setFocusable(true);
+            //tvDraw.setFocusable(true);
             tvMenu.setFocusable(true);
         }
     }
