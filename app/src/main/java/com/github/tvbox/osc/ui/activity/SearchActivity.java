@@ -132,11 +132,11 @@ public class SearchActivity extends BaseActivity {
         ivQRCode = findViewById(R.id.ivQRCode);
         mGridView = findViewById(R.id.mGridView);
         keyboard = findViewById(R.id.keyBoardRoot);
-        mGridViewWord = findViewById(R.id.mGridViewWord);
-        mGridViewWord.setHasFixedSize(true);
-        mGridViewWord.setLayoutManager(new V7LinearLayoutManager(this.mContext, 1, false));
-        wordAdapter = new PinyinAdapter();
-        mGridViewWord.setAdapter(wordAdapter);
+        //mGridViewWord = findViewById(R.id.mGridViewWord);
+        //mGridViewWord.setHasFixedSize(true);
+        //mGridViewWord.setLayoutManager(new V7LinearLayoutManager(this.mContext, 1, false));
+        //wordAdapter = new PinyinAdapter();
+        //mGridViewWord.setAdapter(wordAdapter);
         // Allow Dpad Key switch to other focus
         etSearch.setOnKeyListener(new View.OnKeyListener() {
             @Override
@@ -165,12 +165,14 @@ public class SearchActivity extends BaseActivity {
                 return false;
             }
         });
+        /**
         wordAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
                 search(wordAdapter.getItem(position));
             }
         });
+        */
         mGridView.setHasFixedSize(true);
         // lite
         if (Hawk.get(HawkConfig.SEARCH_VIEW, 0) == 0)
@@ -221,6 +223,8 @@ public class SearchActivity extends BaseActivity {
                 etSearch.setText("");
             }
         });
+        
+        /**
         keyboard.setOnSearchKeyListener(new SearchKeyboard.OnSearchKeyListener() {
             @Override
             public void onSearchKey(int pos, String key) {
@@ -246,6 +250,7 @@ public class SearchActivity extends BaseActivity {
                 }
             }
         });
+        */
         tvSearchCheckbox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
