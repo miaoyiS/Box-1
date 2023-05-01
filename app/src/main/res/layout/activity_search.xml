@@ -123,25 +123,6 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/llWord"
-        android:layout_width="@dimen/vs_160"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:paddingTop="@dimen/vs_20"
-        android:paddingBottom="@dimen/vs_20">
-
-        <com.owen.tvrecyclerview.widget.TvRecyclerView
-            android:id="@+id/mGridViewWord"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:clipChildren="false"
-            android:clipToPadding="false"
-            app:tv_horizontalSpacingWithMargins="@dimen/vs_5"
-            app:tv_selectedItemIsCentered="true"
-            app:tv_verticalSpacingWithMargins="@dimen/vs_5" />
-    </LinearLayout>
-
-    <LinearLayout
         android:id="@+id/llLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
