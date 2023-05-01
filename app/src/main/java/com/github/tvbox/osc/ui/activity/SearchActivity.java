@@ -131,7 +131,7 @@ public class SearchActivity extends BaseActivity {
         tvAddress = findViewById(R.id.tvAddress);
         ivQRCode = findViewById(R.id.ivQRCode);
         mGridView = findViewById(R.id.mGridView);
-        //keyboard = findViewById(R.id.keyBoardRoot);
+        keyboard = findViewById(R.id.keyBoardRoot);
         //mGridViewWord = findViewById(R.id.mGridViewWord);
         //mGridViewWord.setHasFixedSize(true);
         //mGridViewWord.setLayoutManager(new V7LinearLayoutManager(this.mContext, 1, false));
@@ -224,7 +224,7 @@ public class SearchActivity extends BaseActivity {
             }
         });
         
-        /**
+        
         keyboard.setOnSearchKeyListener(new SearchKeyboard.OnSearchKeyListener() {
             @Override
             public void onSearchKey(int pos, String key) {
@@ -232,17 +232,11 @@ public class SearchActivity extends BaseActivity {
                     String text = etSearch.getText().toString().trim();
                     text += key;
                     etSearch.setText(text);
-                    if (text.length() > 0) {
-                        loadRec(text);
-                    }
                 } else if (pos == 1) {
                     String text = etSearch.getText().toString().trim();
                     if (text.length() > 0) {
                         text = text.substring(0, text.length() - 1);
                         etSearch.setText(text);
-                    }
-                    if (text.length() > 0) {
-                        loadRec(text);
                     }
                 } else if (pos == 0) {
                     RemoteDialog remoteDialog = new RemoteDialog(mContext);
@@ -250,7 +244,7 @@ public class SearchActivity extends BaseActivity {
                 }
             }
         });
-        */
+        
         tvSearchCheckbox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -278,49 +272,6 @@ public class SearchActivity extends BaseActivity {
 
     private void initViewModel() {
         sourceViewModel = new ViewModelProvider(this).get(SourceViewModel.class);
-    }
-
-    /**
-     * 拼音联想
-     */
-    private void loadRec(String key) {
-        OkGo.get("https://tv.aiseet.atianqi.com/i-tvbin/qtv_video/search/get_search_smart_box")
-                .params("format", "json")
-                .params("page_num", 0)
-                .params("page_size", 50) //随便改
-                .params("key", key)
-                .execute(new AbsCallback() {
-                    @Override
-                    public void onSuccess(Response response) {
-                        try {
-                            ArrayList hots = new ArrayList<>();
-                            String result = (String) response.body();
-                            Gson gson = new Gson();
-                            JsonElement json = gson.fromJson(result, JsonElement.class);
-                            JsonArray groupDataArr = json.getAsJsonObject()
-                                    .get("data").getAsJsonObject()
-                                    .get("search_data").getAsJsonObject()
-                                    .get("vecGroupData").getAsJsonArray()
-                                    .get(0).getAsJsonObject()
-                                    .get("group_data").getAsJsonArray();
-                            for (JsonElement groupDataElement : groupDataArr) {
-                                JsonObject groupData = groupDataElement.getAsJsonObject();
-                                String keywordTxt = groupData.getAsJsonObject("dtReportInfo")
-                                        .getAsJsonObject("reportData")
-                                        .get("keyword_txt").getAsString();
-                                hots.add(keywordTxt.trim());
-                            }
-                            wordAdapter.setNewData(hots);
-                        } catch (Throwable th) {
-                            th.printStackTrace();
-                        }
-                    }
-
-                    @Override
-                    public String convertResponse(okhttp3.Response response) throws Throwable {
-                        return response.body().string();
-                    }
-                });
     }
 
     private void initData() {
