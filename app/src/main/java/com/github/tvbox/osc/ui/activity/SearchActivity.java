@@ -131,7 +131,7 @@ public class SearchActivity extends BaseActivity {
         tvAddress = findViewById(R.id.tvAddress);
         ivQRCode = findViewById(R.id.ivQRCode);
         mGridView = findViewById(R.id.mGridView);
-        keyboard = findViewById(R.id.keyBoardRoot);
+        //keyboard = findViewById(R.id.keyBoardRoot);
         //mGridViewWord = findViewById(R.id.mGridViewWord);
         //mGridViewWord.setHasFixedSize(true);
         //mGridViewWord.setLayoutManager(new V7LinearLayoutManager(this.mContext, 1, false));
