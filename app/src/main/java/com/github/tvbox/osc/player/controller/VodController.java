@@ -292,6 +292,7 @@ public class VodController extends BaseController {
     TvRecyclerView mGridView;
 
     // takagen99 : To get system time
+    /*
     private final Runnable mTimeRunnable = new Runnable() {
         @Override
         public void run() {
@@ -301,6 +302,7 @@ public class VodController extends BaseController {
             mHandler.postDelayed(this, 1000);
         }
     };
+    */
 
     private final Runnable mUpdateLayout = new Runnable() {
         @Override
@@ -312,7 +314,7 @@ public class VodController extends BaseController {
     @Override
     protected void onDetachedFromWindow() {
         super.onDetachedFromWindow();
-        mHandler.removeCallbacks(mTimeRunnable);
+        //mHandler.removeCallbacks(mTimeRunnable);
     }
 
     @Override
@@ -1100,7 +1102,7 @@ public class VodController extends BaseController {
     void showBottom() {
         mHandler.removeMessages(1003);
         mHandler.sendEmptyMessage(1002);
-        mHandler.post(mTimeRunnable);
+        //mHandler.post(mTimeRunnable);
         mHandler.postDelayed(mHideBottomRunnable, 8000);
     }
 
