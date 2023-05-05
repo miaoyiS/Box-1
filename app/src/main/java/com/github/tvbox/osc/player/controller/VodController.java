@@ -249,8 +249,8 @@ public class VodController extends BaseController {
 
     // bottom container
     LinearLayout mBottomRoot;
-    TextView mTime;
-    TextView mTimeEnd;
+    //TextView mTime;
+    //TextView mTimeEnd;
     TextView mCurrentTime;
     SeekBar mSeekBar;
     TextView mTotalTime;
@@ -344,8 +344,8 @@ public class VodController extends BaseController {
 
         // bottom container
         mBottomRoot = findViewById(R.id.bottom_container);
-        mTime = findViewById(R.id.tv_sys_time);
-        mTimeEnd = findViewById(R.id.tv_time_end);
+        //mTime = findViewById(R.id.tv_sys_time);
+        //mTimeEnd = findViewById(R.id.tv_time_end);
         mCurrentTime = findViewById(R.id.curr_time);
         mSeekBar = findViewById(R.id.seekBar);
         mTotalTime = findViewById(R.id.total_time);
